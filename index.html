@@ -3,17 +3,18 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link rel="stylesheet" href="styles.css"></link>
     <title>Twittler</title>
   </head>
   <body>
     <header>
       <h1>Welcome to Twittler</h1>
+      <h3>The place for the wackiest tweets</h3>
     </header>
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
-        $body.html('');
 
         var index = streams.home.length - 1;
         while(index >= 0){
