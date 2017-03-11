@@ -26,12 +26,26 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-	font-family: Arial;
-	background-color: aqua;
+	font-family: Courier;
+	background-color: rgba(0,30,128, .2);
+	position: relative;
 }
 
 header {
-	background-color: blue;
+	background-color: rgba(0,0,128, .5);
 	color: white;
+	padding: 2em;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+script {
+	padding 2em;
 }
 
