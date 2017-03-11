@@ -46,14 +46,38 @@ h1 {
 .look {
 	padding-top: 30px;
 	padding-left: 40px;
-	font-weight: bold;
+	padding-bottom: 20px;
 	font-style: italic;
 }
 
-.tweetDate {
-	padding-top: 20px;
+#lookStart {
+	font-weight: bold;
+}
+
+.tweetWindow {
+	text-align:left;
+	color: rgba(0,0,128, .8);
+	font-size: 18px;
+}
+
+
+.tweetDate, .tweetMessage {
+	text-align: left;
 	padding-left: 20px;
-	font-size: 14px;
+}
+
+.tweetDate {
+	font-size: 10px;
+	font-style:italic;
+	color: rgba(0,0,128, .8);
+	padding-top:-5px;
+}
+
+.tweetMessage {
+	text-align:left;
+	width:700px;
+	color: black;
+	padding-bottom: 20px;
 }
 
 
