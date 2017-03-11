@@ -29,16 +29,10 @@ body {
 	font-family: Arial;
 	position: relative;
 	padding: 2em;
-	background-color: #599bb3;
-	opacity: 1;
+	background-color: #ccddff;
 }
 
 header {
-	/*background-color: #599bb3;
-	color: white;
-	font-family: Courier;
-	padding: 20px;
-	text-align: center;*/
 	-moz-box-shadow: 0px 10px 14px -7px #276873;
 	-webkit-box-shadow: 0px 10px 14px -7px #276873;
 	box-shadow: 0px 10px 14px -7px #276873;

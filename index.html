@@ -21,12 +21,9 @@
     
     <script>
       $(document).ready(function(){
+        
         var $body = $('body');
         var index = streams.home.length - 1;
-        
-        $('.home').on('click', function() {
-          location.reload();
-        })
 
         function currentTweets() {
           while(index >= 0){
@@ -43,8 +40,6 @@
           }
         }
 
-        currentTweets();
-
         function userTimeline(user1, user2, user3) {
           $(user1).parent().remove();
           $(user2).parent().remove();
@@ -52,6 +47,12 @@
           $('.home').text('Go back to home feed');
           $('#lookStart').text('User Timeline');
         }
+
+        currentTweets();
+
+        $('.home').on('click', function() {
+          location.reload();
+        })
         
         $('.tweetWindow').on('click', '.sharksforcheap', function() {
           userTimeline('.shawndrost', '.mracus', '.douglascalhoun')
