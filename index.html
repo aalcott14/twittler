@@ -7,26 +7,47 @@
     <title>Twittler</title>
   </head>
   <body>
+    
     <header>
       <h1>Welcome to Twittler</h1>
-      <h3>Where your friends always tweet weird things</h3>
+      <h3>What are your friends doing?</h3>
     </header>
-    <script>
 
+    <div class='ponder'>
+      <p>Let's see have a look...</p>
+    </div>
+    
+    <script>
       $(document).ready(function(){
         var $body = $('body');
-
         var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
+        var indexStore = index;
+
+        function currentTweets() {
+          while(index >= 0){
+            var tweet = streams.home[index];
+            var $tweetDate = $("<div class='tweetDate'></div>");
+            var $tweet = $("<div class='homeTweet'></div>");
+            $tweetDate.text('Updated ' + tweet.created_at);
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $tweetDate.appendTo($body);
+            $tweet.appendTo($body);
+            index -= 1;
+          }
         }
+        
+        function refreshTweets() {
+          refreshInterval = setInterval(function() {
+            for (var i = indexStore + 1; i < index; i++) {
+              addTweet(i);
+              indexStore = i;
+            }
+          }, 1000);
+        }
+        
+        currentTweets();
 
       });
-
     </script>
   </body>
 </html>
