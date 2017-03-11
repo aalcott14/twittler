@@ -26,8 +26,8 @@
         var index = streams.home.length - 1;
 
         function currentTweets() {
-          while(index >= 0){
-            var tweet = streams.home[index];
+          for (var i = 0; i <= index; i++) {
+            var tweet = streams.home[i];
             var $tweetWindow = $("<button type='button' class='tweetWindow'></button>");
             var $tweetDate = $("<div class='tweetDate'></div>");
             var $tweetUser = $("<div class=" + tweet.user + "></div>")
@@ -36,7 +36,6 @@
             $tweetUser.text('@' + tweet.user).appendTo($tweetWindow);
             $tweetDate.text('Posted ' + tweet.created_at).appendTo($tweetWindow);
             $tweetMessage.text(tweet.message).appendTo($tweetWindow);
-            index -= 1;
           }
         }
 
