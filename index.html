@@ -13,8 +13,8 @@
       <h3>What are your friends doing?</h3>
     </header>
 
-    <div class='ponder'>
-      <p>Let's see have a look...</p>
+    <div class='look'>
+      <p>Let's have a look...</p>
     </div>
     
     <script>
@@ -35,16 +35,6 @@
             index -= 1;
           }
         }
-        
-        function refreshTweets() {
-          refreshInterval = setInterval(function() {
-            for (var i = indexStore + 1; i < index; i++) {
-              addTweet(i);
-              indexStore = i;
-            }
-          }, 1000);
-        }
-        
         currentTweets();
 
       });
