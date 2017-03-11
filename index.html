@@ -14,8 +14,8 @@
     </header>
 
     <div class='look'>
-      <p id='lookStart'>Let's have a look...</p>
       <button type='button' class='home'>Refresh tweets!</button>
+      <p id='lookStart'>Home Feed</p>
     </div>
     
     
@@ -23,7 +23,6 @@
       $(document).ready(function(){
         var $body = $('body');
         var index = streams.home.length - 1;
-        var timeline = true;
         
         $('.home').on('click', function() {
           location.reload();
@@ -38,8 +37,8 @@
             var $tweetMessage = $("<div class='tweetMessage'></div>");
             $tweetWindow.appendTo($body);
             $tweetUser.text('@' + tweet.user).appendTo($tweetWindow);
-            $tweetDate.text('Posted ' + tweet.created_at).appendTo($tweetUser);
-            $tweetMessage.text(tweet.message).appendTo($tweetUser);
+            $tweetDate.text('Posted ' + tweet.created_at).appendTo($tweetWindow);
+            $tweetMessage.text(tweet.message).appendTo($tweetWindow);
             index -= 1;
           }
         }
@@ -47,14 +46,13 @@
         currentTweets();
 
         function userTimeline(user1, user2, user3) {
-          if(timeline) {
-            $(user1).parent().remove();
-            $(user2).parent().remove();
-            $(user3).parent().remove();
-            $('.home').text('Go back to home feed');
-            timeline = false;
-          }
+          $(user1).parent().remove();
+          $(user2).parent().remove();
+          $(user3).parent().remove();
+          $('.home').text('Go back to home feed');
+          $('#lookStart').text('User Timeline');
         }
+        
         $('.tweetWindow').on('click', '.sharksforcheap', function() {
           userTimeline('.shawndrost', '.mracus', '.douglascalhoun')
         })
@@ -67,13 +65,7 @@
         $('.tweetWindow').on('click', '.mracus', function() {
           userTimeline('.shawndrost', '.sharksforcheap', '.douglascalhoun')
         })
-        $('.tweetWindow').on('click', '.back', function() {
-          $('div').remove();
-          timeline = true;
-          currentTweets();
-        })
-
-
+        
       });
     </script>
   </body>
