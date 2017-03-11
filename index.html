@@ -18,25 +18,39 @@
       <p id='lookStart'>Home Feed</p>
     </div>
     
-    
+    <span class='feed'></span>
     <script>
       $(document).ready(function(){
         
         var $body = $('body');
         var index = streams.home.length - 1;
+        var indexStore = index;
+   
+        function newTweet(i) {
+          var tweet = streams.home[i];
+          var $tweetWindow = $("<button type='button' class='tweetWindow'></button>");
+          var $tweetDate = $("<div class='tweetDate'></div>");
+          var $tweetUser = $("<div class=" + tweet.user + "></div>")
+          var $tweetMessage = $("<div class='tweetMessage'></div>");
+          $tweetUser.text('@' + tweet.user).appendTo($tweetWindow);
+          $tweetDate.text('Posted ' + tweet.created_at).appendTo($tweetWindow);
+          $tweetMessage.text(tweet.message).appendTo($tweetWindow);
+          $tweetWindow.prependTo($('span'));
+        }
 
         function currentTweets() {
           for (var i = 0; i <= index; i++) {
-            var tweet = streams.home[i];
-            var $tweetWindow = $("<button type='button' class='tweetWindow'></button>");
-            var $tweetDate = $("<div class='tweetDate'></div>");
-            var $tweetUser = $("<div class=" + tweet.user + "></div>")
-            var $tweetMessage = $("<div class='tweetMessage'></div>");
-            $tweetWindow.appendTo($body);
-            $tweetUser.text('@' + tweet.user).appendTo($tweetWindow);
-            $tweetDate.text('Posted ' + tweet.created_at).appendTo($tweetWindow);
-            $tweetMessage.text(tweet.message).appendTo($tweetWindow);
+            newTweet(i);
           }
+        }
+      
+        function pushNewTweet() {
+          setInterval(function() {
+            for (var i = indexStore + 1; i < streams.home.length - 1; i++) {
+              newTweet(i);
+              indexStore = i;
+            }
+          }, 10000);
         }
 
         function userTimeline(user1, user2, user3) {
@@ -48,6 +62,7 @@
         }
 
         currentTweets();
+        pushNewTweet();
 
         $('.home').on('click', function() {
           location.reload();
